@@ -1,11 +1,4 @@
 function generatePassword() {
-var lowercase = "abcdefghijklmnopqrstuvwxyz"
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numbers = "0123456789"
-var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-var characters = ""
-var password = ""
-  
   var passwordLength = window.prompt("How many characters would you like your password to be? (8-128 characters)");
     passwordLength = parseInt(passwordLength)
     console.log(passwordLength)
@@ -18,6 +11,12 @@ var password = ""
       writePassword();
     }
     else {
+      var lowercase = "abcdefghijklmnopqrstuvwxyz"
+      var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      var numbers = "0123456789"
+      var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+      var characters = ""
+      var password = ""
       var lowerCaseConfirm = window.confirm("Would you like there to be lowercase characters in your password?")
         if (lowerCaseConfirm) {
           characters += lowercase;
