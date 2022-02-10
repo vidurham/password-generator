@@ -1,22 +1,22 @@
+var lowercase = "abcdefghijklmnopqrstuvwxyz"
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var numbers = "0123456789"
+var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+var characters = ""
+var password = ""
 function generatePassword() {
   var passwordLength = window.prompt("How many characters would you like your password to be? (8-128 characters)");
-    passwordLength = parseInt(passwordLength)
-    console.log(passwordLength)
+    passwordLength = parseInt(passwordLength);
+    console.log(passwordLength);
     if (isNaN(passwordLength)) {
       window.alert("Invalid response! Please enter a number between 8 - 128");
-      writePassword();
+      return;
     }
     else if (passwordLength < 8 || passwordLength > 128) {
       window.alert("Invalid number of characters! Please enter a number between 8 - 128");
-      writePassword();
+      return
     }
     else {
-      var lowercase = "abcdefghijklmnopqrstuvwxyz"
-      var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      var numbers = "0123456789"
-      var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-      var characters = ""
-      var password = ""
       var lowerCaseConfirm = window.confirm("Would you like there to be lowercase characters in your password?")
         if (lowerCaseConfirm) {
           characters += lowercase;
@@ -37,11 +37,17 @@ function generatePassword() {
           characters += special;
           console.log(characters);
         }
+
+      if (!lowerCaseConfirm && !upperCaseConfirm && !numberConfirm && !specialConfirm) {
+        window.alert("Invalid input, no type of characters selected")
+      }
+      else {
         for (var i = 0; i < passwordLength; i++) {
           password += characters.charAt(Math.floor(Math.random()*characters.length))
         }
         console.log(password);
         return password;
+      }
     }
 }
 
