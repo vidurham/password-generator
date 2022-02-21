@@ -2,19 +2,21 @@ var lowercase = "abcdefghijklmnopqrstuvwxyz"
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "0123456789"
 var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-var characters = ""
-var password = ""
+
+
 function generatePassword() {
+  var password = ""
+  var characters = ""
   var passwordLength = window.prompt("How many characters would you like your password to be? (8-128 characters)");
     passwordLength = parseInt(passwordLength);
     console.log(passwordLength);
     if (isNaN(passwordLength)) {
       window.alert("Invalid response! Please enter a number between 8 - 128");
-      return;
+      return null;
     }
     else if (passwordLength < 8 || passwordLength > 128) {
       window.alert("Invalid number of characters! Please enter a number between 8 - 128");
-      return
+      return null;
     }
     else {
       var lowerCaseConfirm = window.confirm("Would you like there to be lowercase characters in your password?")
@@ -39,7 +41,8 @@ function generatePassword() {
         }
 
       if (!lowerCaseConfirm && !upperCaseConfirm && !numberConfirm && !specialConfirm) {
-        window.alert("Invalid input, no type of characters selected")
+        window.alert("Invalid input, no type of characters selected");
+        return null
       }
       else {
         for (var i = 0; i < passwordLength; i++) {
